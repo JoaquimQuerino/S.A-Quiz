@@ -1,0 +1,376 @@
+.quiz-btn {
+    width: 80%; /* ajuste o tamanho do botão */
+    height: 50px; /* ajuste o tamanho do botão */
+    font-size: 16px; /* ajuste o tamanho da fonte */
+    text-align: center; /* alinhe o texto ao centro */
+    padding: 10px; /* adicione um pouco de espaço entre o texto e a borda do botão */
+    border: none; /* remova a borda do botão */
+    left: -50px;
+    position: flex  ;
+    margin-top: 10px;
+    border-radius: 5px; /* adicione um pouco de arredondamento às bordas do botão */
+    color: #000000; /* ajuste a cor do texto do botão */
+    cursor: pointer; /* mude o cursor para uma mão quando o usuário passa o mouse sobre o botão */
+  }
+  
+  :root {
+    --primary-color: #8c7b6b;
+    --secondary-color: #f2ede6;
+    --background-color: #d9ccc0;
+    --header-gradient: linear-gradient(to right, #000000, #b9b9b9);
+    --text-dark: #333;
+    --text-light: #fff;
+    --cloud-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* ==============================
+     Cabeçalho
+     ============================== */
+  header {
+    background: var(--header-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    position: relative;
+    height: 70px;
+    z-index: 100;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    position: absolute;
+    left: 200px;
+    top: 24px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    transition: opacity 0.3s;
+  }
+  
+  nav ul li a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+  
+  .sesi-logo {
+    height: 40px;
+    width: auto;
+    left: 1720px;
+    margin-left: 20px;
+    position: absolute;
+  }
+  
+  /* Botão de Login (substitui o .user-icon) */
+  .login-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 20px;
+  }
+  
+  .login-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+  
+  .login-btn img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+  
+  /* ==============================
+     Nuvens Decorativas
+     ============================== */
+  .cloud {
+    position: absolute;
+    background-color: var(--cloud-color);
+    border-radius: 50%;
+    filter: blur(15px);
+    z-index: 0;
+  }
+  
+  .cloud1 {
+    width: 200px;
+    height: 80px;
+    top: 20%;
+    left: 5%;
+  }
+  
+  .cloud2 {
+    width: 250px;
+    height: 100px;
+    top: 60%;
+    right: 5%;
+  }
+  
+  .cloud3 {
+    width: 180px;
+    height: 70px;
+    bottom: 15%;
+    left: 20%;
+  }
+  
+  /* ==============================
+     Container Principal
+     ============================== */
+  .container {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* ==============================
+     Painéis
+     ============================== */
+  .panel {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 25px;
+    bottom: -250px;
+    transition: box-shadow 0.3s;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .panel:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  
+  .left-panel {
+    flex: 1 1 500px;
+    max-width: 600px;
+  }
+  
+  .left-panel h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  
+  .left-panel p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+  
+  .left-panel button {
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .left-panel button:hover {
+    background-color: #6d5e52;
+  }
+  
+  .right-panel {
+    flex: 1 1 400px;
+    max-width: 450px;
+    display: flex;
+    bottom: -250px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .buttons-area {
+    width: 100%;
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      gap: 10px;
+      top: 70px;
+      left: 45px;
+      margin-top: 20px;
+  }
+  
+  .buttons-area button {
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  
+  .buttons-area button:hover {
+    background-color: #d8ccc1;
+    transform: scale(1.02);
+  }
+  
+  h1 {
+    text-align: center;
+    bottom: 210px;
+    position: absolute;
+    left: 35px;
+    margin-top: -50px;
+  }
+  
+  
+  /* ==============================
+     Elementos Decorativos FIXOS
+     ============================== */
+  .question-icon {
+    width: 80px;
+    height: 80px;
+    background: url(/fotosS.A/question.png) no-repeat center/contain;
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    z-index: 10;
+  }
+  
+  .puzzle-icon {
+    width: 100px;
+    height: 100px;
+    background: url('/fotosS.A/puzzle1.png') no-repeat center/contain;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    opacity: 0.9;
+    z-index: 10;
+  }
+  
+  dotlottie-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.1;
+  }
+  
+  /* ==============================
+     Responsividade
+     ============================== */
+  @media (max-width: 992px) {
+    .content-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .left-panel, .right-panel {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      height: auto;
+      padding: 15px;
+    }
+    
+    .logo {
+      margin-bottom: 10px;
+    }
+    
+    nav ul {
+      position: static;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    
+    .sesi-logo {
+      position: static;
+      margin: 10px auto;
+    }
+    
+    .login-btn {
+      position: static;
+      margin: 0 auto;
+    }
+    
+    .container {
+      padding: 20px 15px;
+    }
+    
+    .panel {
+      padding: 20px;
+      bottom: 0;
+    }
+    
+    .question-icon, .puzzle-icon, .cloud {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .left-panel h2 {
+      font-size: 1.5rem;
+    }
+    
+    .buttons-area button {
+      padding: 12px;
+      font-size: 1rem;
+    }
+    
+    nav ul {
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+    }
+  }

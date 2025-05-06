@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Connect - Cadastro</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+    <!-- Nuvens Decorativas -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Quiz Connect</div>
+        <nav>
+            <ul>
+                <li><a href="/Paginainicial/inicial.html">inicio</a></li>
+                <li><a href="/PaginaCadastro/cadastro.html">Cadastro</a></li>
+            </ul>
+        </nav>
+        <img src="/fotosS.A/robo2.png" alt="robo2" class="robo2">
+        <img src="/fotosS.A/sesi-logo.png" alt="SESI Logo" class="sesi-logo">
+        <button class="login-btn" title="Login">
+            <img src="/fotosS.A/logo.png" alt="Ícone de Login">
+        </button>
+    </header>
+    
+    <!-- Menu Mobile -->
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="/Paginainicial/inicial.html">Início</a></li>
+            <li><a href="/PaginaCadastro/cadastro.html">Sobre</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Formulário de Cadastro -->
+    <section class="signup-container">
+        <h2>Criar Conta</h2>
+        <form id="signupForm">
+            <div class="input-group">
+                <input type="email" id="email" placeholder="E-mail" class="input-box" required>
+            </div>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Nome de usuário" class="input-box" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Senha" class="input-box" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirm-password" placeholder="Confirmar senha" class="input-box" required>
+            </div>
+            <button type="submit" class="signup-button">Cadastrar</button>
+        </form>
+        <div class="login-link">
+            Já tem uma conta? <a href="/PaginaLogin/login.html">Faça login</a>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Menu Mobile
+            const menuToggle = document.querySelector(".menu-toggle");
+            const mobileNav = document.querySelector(".mobile-nav");
+    
+            if (menuToggle && mobileNav) {
+                menuToggle.addEventListener("click", function () {
+                    mobileNav.style.display = mobileNav.style.display === "block" ? "none" : "block";
+                });
+            }
+    
+            // Validação de cadastro
+            const signupForm = document.getElementById("signupForm");
+            
+            if (signupForm) {
+                signupForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    
+                    // Obter valores dos campos
+                    const email = document.getElementById("email").value.trim();
+                    const username = document.getElementById("username").value.trim();
+                    const password = document.getElementById("password").value;
+                    const confirmPassword = document.getElementById("confirm-password").value;
+                    
+                    // Validações
+                    if (!email || !username || !password || !confirmPassword) {
+                        alert("Por favor, preencha todos os campos!");
+                        return false;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        alert("As senhas não coincidem!");
+                        return false;
+                    }
+                    
+                    if (password.length < 6) {
+                        alert("A senha deve ter pelo menos 6 caracteres!");
+                        return false;
+                    }
+                    
+                    // Simular cadastro bem-sucedido
+                    try {
+                        // Aqui você pode adicionar uma chamada AJAX para o backend
+                        // Por enquanto, apenas simulamos o sucesso
+                        alert("Cadastro realizado com sucesso!\nRedirecionando...");
+                        
+                        // Armazenar dados temporariamente (apenas para demonstração)
+                        const userData = {
+                            email: email,
+                            username: username,
+                            password: password // Na prática, nunca armazene senhas em plain text
+                        };
+                        
+                        localStorage.setItem('tempUserData', JSON.stringify(userData));
+                        
+                        // Redirecionar após 1 segundo
+                        setTimeout(function() {
+                            window.location.href = "/paginainicial/inicial.html";
+                        }, 1000);
+                        
+                    } catch (error) {
+                        console.error("Erro no cadastro:", error);
+                        alert("Ocorreu um erro durante o cadastro. Por favor, tente novamente.");
+                    }
+                    
+                    return false; // Impede o submit tradicional
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Connect - Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!-- Nuvens Decorativas -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="elemento-decorativo"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Quiz Connect</div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Cadastro</a></li>
+            </ul>
+        </nav>
+        <img src="/fotosS.A/robo2.png" alt="robo2" class="robo2">
+        <img src="/fotosS.A/sesi-logo.png" alt="SESI Logo" class="sesi-logo">
+        <button class="login-btn" title="Login">
+            <img src="/fotosS.A/logo.png" alt="Ícone de Login">
+        </button>
+    </header>
+    
+    <!-- Formulário de Login -->
+    <section class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Usuário" class="input-box" required>
+            <input type="password" id="password" placeholder="Senha" class="input-box" required>
+            <button type="submit" class="login-button">Continuar</button>
+        </form>
+        <p>Sem conta? <a href="/PaginaCadastro/cadastro.html" class="signup-link">Clique aqui!</a></p>
+    </section>
+    
+     <script>
+    // Espera o DOM carregar completamente
+    document.addEventListener("DOMContentLoaded", function() {
+        // Verifica se os elementos existem antes de adicionar listeners
+        const loginForm = document.getElementById("loginForm");
+        const signupLink = document.querySelector(".signup-link");
+        
+        if (loginForm) {
+            loginForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+                const username = document.getElementById("username").value.trim();
+                const password = document.getElementById("password").value.trim();
+                
+                if(username && password) {
+                    console.log("Redirecionando para:", "/Paginainicial/inicial.html");
+                    window.location.href = "/Paginainicial/inicial.html"; // Caminho relativo
+                    return false;
+                } else {
+                    alert("Por favor, preencha todos os campos.");
+                }
+            });
+        } else {
+            console.error("Formulário de login não encontrado!");
+        }
+        
+        if (signupLink) {
+            signupLink.addEventListener("click", function(event) {
+                event.preventDefault();
+                console.log("Redirecionando para:", "/PaginaCadastro/cadastro.html");
+                window.location.href = "/PaginaCadastro/cadastro.html"; // Caminho relativo
+                return false;
+            });
+        } else {
+            console.error("Link de cadastro não encontrado!");
+        }
+    });
+</script>
+</body>
+</html>

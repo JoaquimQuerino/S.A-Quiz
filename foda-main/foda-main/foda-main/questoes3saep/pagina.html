@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Connect</title>
+  <link rel="stylesheet" href="questoes.css">
+  <link rel="stylesheet" href="questoes.js">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Quiz Connect</div>
+    <nav>
+      <a href="#">Início</a>
+      <a href="/PaginaCadastro/cadastro.html">Cadastro</a>
+    </nav>
+    <img src="/fotosS.A/sesi-logo.png" alt="SESI Logo" class="sesi-logo">
+    <button class="login-btn" title="Login">
+      <img src="/fotosS.A/logo.png" alt="Ícone de Login">
+    </button>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Escolha sua Área do Conhecimento</h1>
+    
+    <div class="cards-container">
+      <a href="#" class="card matematica" onclick="selecionarMateria('matematica', 'Matemática')">
+        Matemática
+      </a>
+      <a href="#" class="card natureza" onclick="selecionarMateria('ciencias', 'Natureza')">
+        Natureza
+      </a>
+      <a href="#" class="card humanas" onclick="selecionarMateria('historia', 'Humanas')">
+        Humanas
+      </a>
+      <a href="#" class="card linguagens" onclick="selecionarMateria('portugues', 'Linguagens')">
+        Linguagens
+      </a>
+    </div>
+  </div>
+  
+  <!-- Tela cheia da prova -->
+  <div class="prova-container" id="provaContainer">
+    <div class="prova-header">
+      <h2 id="provaTitulo">Prova</h2>
+      <button class="fechar-prova" onclick="fecharProva()">Fechar</button>
+    </div>
+    
+    <div class="questao-container">
+      <div class="questao" id="questaoAtual"></div>
+    </div>
+    
+    <div class="navegacao">
+      <button class="nav-button" id="btnAnterior" disabled>Anterior</button>
+      <button class="nav-button" id="btnProxima">Próxima</button>
+      <button class="nav-button" id="btnFinalizar" style="display: none;">Finalizar</button>
+    </div>
+    
+    <div class="progresso" id="progressoIndicador">
+      Questão <span id="questaoAtualNum">1</span> de <span id="totalQuestoes">8</span>
+    </div>
+    
+    <!-- Tela de Resultados -->
+    <div class="resultado-container" id="resultadoContainer">
+      <h2>Resultados</h2>
+      <div class="resultado-pontuacao">
+        <span id="acertosTotal">0</span>/<span id="totalQuestoesResultado">8</span>
+      </div>
+      <div class="resultado-detalhes" id="resultadoDetalhes">
+        <!-- Preenchido dinamicamente via JavaScript -->
+      </div>
+      <button class="btn-finalizar" onclick="fecharProva()">Voltar ao Início</button>
+      <button class="btn-tentar-novamente" onclick="tentarNovamente()">Tentar Novamente</button>
+    </div>
+  </div>
+  <script>    // Gabarito das respostas corretas
+    const gabarito = {
+      matematica: ["b", "a", "b", "b", "b", "b", "a", "b"],
+      ciencias: ["a", "b", "c", "d", "a", "b", "c", "d"],
+      historia: ["b", "c", "d", "a", "b", "c", "d", "a"],
+      portugues: ["c", "d", "a", "b", "c", "d", "a", "b"]
+    };
+    
+    const materias = {
+      matematica: gerarQuestoes("Matemática"),
+      ciencias: gerarQuestoes("Ciências da Natureza"),
+      historia: gerarQuestoes("Ciências Humanas"),
+      portugues: gerarQuestoes("Linguagens")
+    };
+
+    const provaContainer = document.getElementById("provaContainer");
+    const questaoAtual = document.getElementById("questaoAtual");
+    const provaTitulo = document.getElementById("provaTitulo");
+    const btnAnterior = document.getElementById("btnAnterior");
+    const btnProxima = document.getElementById("btnProxima");
+    const btnFinalizar = document.getElementById("btnFinalizar");
+    const questaoAtualNum = document.getElementById("questaoAtualNum");
+    const totalQuestoes = document.getElementById("totalQuestoes");
+    const resultadoContainer = document.getElementById("resultadoContainer");
+    const questaoContainer = document.querySelector(".questao-container");
+    const navegacao = document.querySelector(".navegacao");
+    const acertosTotal = document.getElementById("acertosTotal");
+    const totalQuestoesResultado = document.getElementById("totalQuestoesResultado");
+    const resultadoDetalhes = document.getElementById("resultadoDetalhes");
+
+    let questoesAtuais = [];
+    let indiceQuestao = 0;
+    let materiaAtual = '';
+    let respostas = {};
+
+    function selecionarMateria(materia, titulo) {
+      materiaAtual = materia;
+      questoesAtuais = materias[materia];
+      indiceQuestao = 0;
+      respostas = {}; // Resetar respostas ao mudar de matéria
+      
+      // Atualiza o título da prova
+      provaTitulo.textContent = `Prova de ${titulo}`;
+      
+      // Atualiza o total de questões
+      totalQuestoes.textContent = questoesAtuais.length;
+      totalQuestoesResultado.textContent = questoesAtuais.length;
+      
+      // Esconde a tela de resultados se estiver visível
+      resultadoContainer.style.display = "none";
+      questaoContainer.style.display = "block";
+      navegacao.style.display = "flex";
+      
+      // Exibe a primeira questão
+      mostrarQuestao();
+      
+      // Mostra a tela da prova
+      provaContainer.style.display = "block";
+      
+      // Desativa o scroll do body
+      document.body.style.overflow = "hidden";
+    }
+
+    function fecharProva() {
+      provaContainer.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+
+    function mostrarQuestao() {
+      const questao = questoesAtuais[indiceQuestao];
+      let alternativasHTML = '';
+      
+      questao.alternativas.forEach((alternativa, index) => {
+        const letra = String.fromCharCode(97 + index); // a, b, c, d
+        const selecionada = respostas[indiceQuestao] === letra ? 'selecionada' : '';
+        
+        alternativasHTML += `
+          <div class="alternativa ${selecionada}" onclick="selecionarAlternativa('${letra}')">
+            <div class="alternativa-letra">${letra})</div>
+            <div class="alternativa-texto">${alternativa}</div>
+          </div>
+        `;
+      });
+      
+      questaoAtual.innerHTML = `
+        <h3>Questão ${indiceQuestao + 1}</h3>
+        <p>${questao.pergunta}</p>
+        <div class="alternativas">
+          ${alternativasHTML}
+        </div>
+      `;
+      
+      // Atualiza o indicador de progresso
+      questaoAtualNum.textContent = indiceQuestao + 1;
+      
+      // Habilita/desabilita os botões de navegação
+      btnAnterior.disabled = indiceQuestao === 0;
+      
+      // Se for a última questão, mostra o botão finalizar em vez do próxima
+      if (indiceQuestao === questoesAtuais.length - 1) {
+        btnProxima.style.display = "none";
+        btnFinalizar.style.display = "block";
+      } else {
+        btnProxima.style.display = "block";
+        btnFinalizar.style.display = "none";
+      }
+    }
+
+    function selecionarAlternativa(letra) {
+      respostas[indiceQuestao] = letra;
+      
+      // Atualiza visualmente a alternativa selecionada
+      const alternativas = document.querySelectorAll('.alternativa');
+      alternativas.forEach(alt => {
+        alt.classList.remove('selecionada');
+        if (alt.querySelector('.alternativa-letra').textContent.startsWith(letra)) {
+          alt.classList.add('selecionada');
+        }
+      });
+    }
+
+    btnAnterior.addEventListener("click", () => {
+      if (indiceQuestao > 0) {
+        indiceQuestao--;
+        mostrarQuestao();
+      }
+    });
+
+    btnProxima.addEventListener("click", () => {
+      if (indiceQuestao < questoesAtuais.length - 1) {
+        indiceQuestao++;
+        mostrarQuestao();
+      }
+    });
+    
+    btnFinalizar.addEventListener("click", () => {
+      mostrarResultados();
+    });
+    
+    function mostrarResultados() {
+      // Esconde a tela de questões
+      questaoContainer.style.display = "none";
+      navegacao.style.display = "none";
+      
+      // Calcula resultados
+      const respostasMaterias = gabarito[materiaAtual];
+      let acertos = 0;
+      let detalhesHTML = '';
+      
+      for (let i = 0; i < questoesAtuais.length; i++) {
+        const respostaUsuario = respostas[i] || "-";
+        const respostaCorreta = respostasMaterias[i];
+        const correto = respostaUsuario === respostaCorreta;
+        
+        if (correto) acertos++;
+        
+        detalhesHTML += `
+          <div class="resultado-item">
+            <div>Questão ${i + 1}:</div>
+            <div class="resultado-resposta ${correto ? 'correto' : 'incorreto'}">
+              Sua resposta: ${respostaUsuario.toUpperCase() || "-"} | 
+              Correta: ${respostaCorreta.toUpperCase()} | 
+              ${correto ? 'ACERTO' : 'ERRO'}
+            </div>
+          </div>
+        `;
+      }
+      
+      // Atualiza os dados na tela de resultados
+      acertosTotal.textContent = acertos;
+      resultadoDetalhes.innerHTML = detalhesHTML;
+      
+      // Mostra a tela de resultados
+      resultadoContainer.style.display = "block";
+    }
+    
+    function tentarNovamente() {
+      // Reinicia o quiz com a mesma matéria
+      respostas = {};
+      indiceQuestao = 0;
+      
+      // Esconde a tela de resultados
+      resultadoContainer.style.display = "none";
+      
+      // Mostra a tela de questões novamente
+      questaoContainer.style.display = "block";
+      navegacao.style.display = "flex";
+      
+      // Exibe a primeira questão
+      mostrarQuestao();
+    }
+
+    function gerarQuestoes(materia) {
+      const questoes = [
+        {
+          pergunta: `Qual é o resultado da expressão 3x² + 6x - 2 quando x = 2?`,
+          alternativas: [
+            "18", 
+            "22", 
+            "26", 
+            "30"
+          ]
+        },
+        {
+          pergunta: `Um retângulo tem comprimento igual ao dobro da sua largura. Se o perímetro do retângulo é 36 cm, quais são suas dimensões?`,
+          alternativas: [
+            "6 cm x 12 cm", 
+            "8 cm x 16 cm", 
+            "9 cm x 18 cm", 
+            "4 cm x 8 cm"
+          ]
+        },
+        {
+          pergunta: `Em um triângulo retângulo, o cateto oposto a um ângulo de 30° mede 5 cm. Qual é a medida da hipotenusa?`,
+          alternativas: [
+            "5 cm", 
+            "10 cm", 
+            "8,66 cm", 
+            "7,5 cm"
+          ]
+        },
+        {
+          pergunta: `Se log₁₀(x) = 2, qual é o valor de x?`,
+          alternativas: [
+            "20", 
+            "100", 
+            "200", 
+            "1000"
+          ]
+        },
+        {
+          pergunta: `Em uma progressão aritmética, o primeiro termo é 7 e a razão é 3. Qual é o décimo termo?`,
+          alternativas: [
+            "27", 
+            "34", 
+            "31", 
+            "37"
+          ]
+        },
+        {
+          pergunta: `Se f(x) = 2x² - 3x + 1, qual é o valor de f(2)?`,
+          alternativas: [
+            "3", 
+            "5", 
+            "7", 
+            "9"
+          ]
+        },
+        {
+          pergunta: `A equação x² - 6x + 8 = 0 tem como soluções:`,
+          alternativas: [
+            "x = 2 e x = 4", 
+            "x = -2 e x = 4", 
+            "x = 2 e x = -4", 
+            "x = -2 e x = -4"
+          ]
+        },
+        {
+          pergunta: `Um capital de R$ 5.000,00 é aplicado à taxa de juros simples de 2% ao mês. Qual será o montante após 6 meses?`,
+          alternativas: [
+            "R$ 5.500,00", 
+            "R$ 5.600,00", 
+            "R$ 5.700,00", 
+            "R$ 6.000,00"
+          ]
+        }
+      ];
+      
+      // Personaliza as perguntas com base na matéria
+      if (materia !== "Matemática") {
+        return questoes.map((q, index) => {
+          return {
+            pergunta: `${materia} - Pergunta ${index + 1}: Esta é uma pergunta exemplo de ${materia.toLowerCase()}.`,
+            alternativas: [
+              `Alternativa A para ${materia}`, 
+              `Alternativa B para ${materia}`, 
+              `Alternativa C para ${materia}`, 
+              `Alternativa D para ${materia}`
+            ]
+          };
+        });
+      }
+      
+      return questoes;
+    }</script>
+</body>
+</html>

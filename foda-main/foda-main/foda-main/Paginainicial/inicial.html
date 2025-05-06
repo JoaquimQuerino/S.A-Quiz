@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="inicial.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Quiz Connect</div>
+    <nav>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="/PaginaCadastro/cadastro.html">cadastro</a></li>
+      </ul>
+    </nav>
+    <img src="/fotosS.A/sesi-logo.png" alt="SESI Logo" class="sesi-logo">
+    <!-- Botão de Login -->
+    <button class="login-btn" title="Login">
+      <img src="/fotosS.A/logo.png" alt="Ícone de Login">
+    </button>
+  </header>
+
+  <div class="container">
+    <!-- Nuvens decorativas -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    
+    <!-- Animação Lottie -->
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <dotlottie-player
+      src="https://lottie.host/3683f09f-c06e-486e-8505-61604f951860/kTkXHyqx7w.lottie"
+      background="transparent"
+      speed="1"
+      style="width: 300px; height: 300px"
+      loop
+      autoplay>
+    </dotlottie-player>
+
+    <div class="content-wrapper">
+      <!-- Painel esquerdo -->
+      <div class="left-panel panel">
+        <h2>Por que nosso site é Funcional?</h2>
+        <p>
+          É um site de provas simplificado para pessoas com D.I e T.E.A,
+          oferecendo um ambiente acessível, seguro e personalizado.
+          Permite o aprendizado no próprio ritmo, promovendo o
+          desenvolvimento cognitivo e a autonomia, tornando o processo
+          educacional mais inclusivo e eficaz.
+        </p>
+        <button class="info-btn">Saiba Mais</button>
+      </div>
+
+      <!-- Painel direito -->
+     <div class="right-panel panel">
+       <div class="question-icon"></div>
+       <div class="buttons-area">
+        <h1>Escolha sua turma</h1>
+         <button class="quiz-btn" type="button" onclick="window.location.href='/questoes9Passe/pagina.html'">9º ano Passe</button>
+         <button class="quiz-btn" type="button" onclick="window.location.href='/questoes3Passe/pagina.html'">3º ano Passe</button>
+         <button class="quiz-btn" type="button" onclick="window.location.href='/questoes3saep/pagina.html'">3º ano saep</button>
+       </div>
+       <div class="puzzle-icon"></div>
+     </div>
+
+  <script>
+    // Função para o botão Saiba Mais
+    document.querySelector('.info-btn').addEventListener('click', () => {
+      alert('ferramentas adaptáveis, promovemos desenvolvimento cognitivo, autonomia e inclusão, tornando a educação mais eficaz e acolhedora.  Simplificar para incluir, adaptar para evoluir!');
+    });
+
+    // Função para os botões de quiz
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert(`Você selecionou: ${btn.textContent}`);
+      });
+    });
+
+    // Função para o botão de login
+    document.querySelector('.login-btn').addEventListener('click', () => {
+     window.location.href = '/PaginaLogin/login.html'; 
+    });
+  </script>
+</body>
+</html>

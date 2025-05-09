@@ -212,7 +212,7 @@ O maior triângulo é uma ampliação com razão 2. Quais são os lados do triâ
     {
       pergunta: `Quanto é 11 elevado ao quadrado?`,
       alternativas: ["110", "91", "100", "121"]
-    }
+    },
     {
         pergunta: `Se um triângulo menor tem lados 3 cm, 4 cm e 5 cm, e outro triângulo semelhante tem lado maior de 15 cm, qual é a razão de semelhança?`,
         alternativas: [
@@ -272,7 +272,7 @@ O maior triângulo é uma ampliação com razão 2. Quais são os lados do triâ
         "Vietnã",
         "Alemanha Ocidental"
       ]
-    } 
+    }, 
     {   
       pergunta: `Selecione a alternativa que apresenta uma fase da Primeira Guerra Mundial.`, // falta foto 1a guerra
         alternativas: [
@@ -312,16 +312,188 @@ Um exemplo de bloco econômico é o _________________________, criado a partir d
         ]
       }
   ];
-} else {
-  // Genérico para outras matérias
-  return Array.from({ length: 4 }, (_, index) => ({
-    pergunta: `${materia} - Pergunta ${index + 1}: Esta é uma pergunta exemplo de ${materia.toLowerCase()}.`,
-    alternativas: [
-      `Alternativa A para ${materia}`,
-      `Alternativa B para ${materia}`,
-      `Alternativa C para ${materia}`,
-      `Alternativa D para ${materia}`
-    ]
-  }));
+} else if (materia === "Linguagens") {
+  return [
+    {
+      pergunta: `O verbo é uma classe de palavras que ditam ações, com base nisso, leia a frase: \n
+      Ana pinta um desenho.\n
+      Qual é o verbo da frase?`,
+      alternativas: [
+        "Ana",
+        "Desenho",
+        "Pinta",
+        "Um"
+      ]
+    },
+    {
+      pergunta: `O verbo é uma classe de palavras que ditam ações, com base nisso, leia a frase: \n
+      Lucas chutou uma bola ontem. \n
+      Qual palavra mostra a ação?`,
+      alternativas: [
+        "Lucas",
+        "Bola",
+        "A",
+        "Chutou"
+      ]
+    },
+    {
+      pergunta: ` O sujeito é quem faz uma ação, e o adjetivo é uma palavra que descreve o sujeito, com base nisso, leia a frase:\n
+O cachorro pequeno corre no quintal.\n
+Qual o sujeito e o adjetivo da frase? `,
+      alternativas: [
+        "Cachorro e Pequeno",
+        "Cachorro e Quintal",
+        "Pequeno e Quintal",
+        "Quintal e Pequeno"
+      ]
+    },
+    {
+      pergunta: `O sujeito é quem faz uma ação, e o adjetivo é uma palavra que descreve o sujeito, com base nisso, leia a frase:\n
+A menina alegre canta uma música.\n
+Qual o sujeito e o adjetivo da frase?`,
+      alternativas: [
+        "Música e Alegre",
+        "Menina e Alegre",
+        "Menina e Música",
+        "Alegre e Menina"
+      ]
+    }, 
+    {   
+      pergunta: `Leia o exemplo com atenção:\n
+      O cachorro está debaixo da cadeira.\n
+      A palavra "debaixo" mostra a posição do cachorro.\n
+      Essa palavra é chamada de preposição.\n
+      Agora complete a frase:\n
+      O caderno está ______ mochila.`,
+        alternativas: [
+          "Para",
+          "Com",
+          "Na",
+          "De"
+        ]
+      },
+      {
+        pergunta: `I. Ele é especialista _____ comunicação e marketing.\n
+        II. Comprei a passagem de ônibus _____ 20 reais.\n
+        III. Estamos _____ 5 km de Manaus.\n
+        As preposições que preenchem corretamente as lacunas são:`, 
+        alternativas: [
+          "em, por, a",
+          "de, por, há",
+          "de, a, em",
+          "em, a, desde"
+        ]
+      },
+      {
+        pergunta: `Lucas queria brincar, mas começou a chover.\n
+        A palavra "mas" junta duas ideias diferentes:\n
+        Essa palavrinha é chamada de conjunção.\n
+        Agora complete a frase:\n
+        Ana estava com sono, ______ continuou estudando.`,
+        alternativas: [
+          "E",
+          "Porém",
+          "Porque",
+          "Ou"
+        ]
+      },
+      {
+        pergunta: `Pedro precisa escolher um lápis ou uma borracha.
+        A palavra "uma" junta duas coisas parecidas.
+        Essa palavrinha é uma conjunção.
+        Agora complete a frase:
+        Joana gosta de maçã ______ banana.`,
+        alternativas: [
+          "Também",
+          "Mas",
+          "Porque",
+          "E"
+        ]
+      }
+  ];
+ } else  {
+  return [
+    {
+      pergunta: `Leia o período abaixo:\n
+      O planeta __________ é conhecido pelos seus anéis, grandes estruturas cósmicas, formadas por fragmentos de gelo e rocha.\n
+      Qual o nome do planeta que completa corretamente a frase acima?`,
+      alternativas: [
+        "Saturno",
+        "Júpiter",
+        "Marte",
+        "Vênus"
+      ]
+    },
+    {
+      pergunta: `O movimento terrestre que a Terra realiza em torno do Sol e que dura aproximadamente um ano civil é chamado de: `,
+      alternativas: [
+        "Transição",
+        "Translação",
+        "Precessão",
+        "Rotação"
+      ]
+    },
+    {
+      pergunta: `Qual cientista propôs o primeiro modelo atômico que ficou conhecido como “bola de bilhar”?`,
+      alternativas: [
+        "Isaac Newton",
+        "Demócrito",
+        "John Dalton",
+        "Ernest Rutherford"
+      ]
+    },
+    {
+      pergunta: `Classifique as afirmações abaixo sobre os modelos como Verdadeira (V) ou Falsa (F), e escolha a alternativa correta.\n 
+      I. O Modelo Atômico de Rutherford sugere que o átomo se assemelha a um pequeno sistema planetário.\n
+      II. O Modelo Atômico de Bohr ficou conhecido como “modelo pudim de ameixa” ou “pudim com passas” em decorrência da forma que as cargas positivas e negativas são organizadas.\n
+      III. No Modelo Atômico de Dalton, o núcleo é formado pelos prótons e nêutrons e os elétrons orbitam ao seu redor da mesma forma que os planetas giram em torno do Sol.\n`, //falta Foto ModelosAtomicos
+      alternativas: [
+        "V, V, V,",
+        "F, V, F",
+        "F, F, F",
+        "V, F, F"
+      ]
+    }, 
+    {   
+      pergunta: `Considerando que cristas são os pontos mais altos da onda e vales os pontos mais baixos da onda, analise a onda representada abaixo, e assinale a alternativa correta sobre o número de cristas e vales`,
+      // falta foto CristaVale
+        alternativas: [
+          "5 e 6",
+          "6 e 10",
+          "10 e 5",
+          "6 e 5"
+        ]
+      },
+      {
+        pergunta: `O neodarwinismo explica a evolução através da seleção natural, mas também leva em conta a variabilidade genética, as mutações e a seleção natural, fatores que contribuem para a diversidade dentro de uma população. \n
+        Assinale a alternativa que NÃO contém um mecanismo de evolução biológica segundo a teoria do neodarwinismo.`,
+        alternativas: [
+          "Mutação",
+          "Deriva genética",
+          "Mimetismo",
+          "Seleção natural"
+        ]
+      },
+      {
+        pergunta: `João tem olhos castanhos. O pai dele também tem olhos castanhos, mas a mãe tem olhos azuis. A cor dos olhos é passada dos pais para os filhos por meio dos genes, que são como "instruções" que o corpo segue.\n
+        O que são os genes?`, 
+        alternativas: [
+          "São células do corpo que ajudam a digerir a comida.",
+          "São instruções dentro do corpo que definem características como cor dos olhos ou do cabelo.",
+          "São células que causam doenças.",
+          "São alimentos que precisamos comer para nos desenvolvermos"
+        ]
+      },
+      {
+        pergunta: `Maria tem cabelo cacheado, assim como sua avó. Mesmo que a mãe de Maria tenha cabelo liso, Maria herdou o tipo de cabelo da avó. Isso acontece porque algumas características podem "pular" uma geração e aparecer nos netos.\n
+        O que significa herdar uma característica na genética?`,
+        alternativas: [
+          "É quando uma característica do corpo é passada dos pais ou avós para os filhos.",
+          "É quando temos a mesma característica que nossos amigos.",
+          "É quando recebemos algo de outra pessoa sem querer.",
+          "É quando mudamos nosso corpo com exercícios."
+        ]
+      }
+  ];
 }
   }

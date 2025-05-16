@@ -305,99 +305,87 @@ Qual foi uma das principais consequências da Revolução Industrial?`,
 } else if (materia === "Linguagens") {
   return [
     {
-      pergunta: `O verbo é uma classe de palavras que ditam ações, com base nisso, leia a frase: \n
-      Ana pinta um desenho.\n
-      Qual é o verbo da frase?`,
+      pergunta: `As redes sociais são usadas para compartilhar informações e opiniões. Algumas postagens podem influenciar o que as pessoas pensam e fazem.\n
+    Qual dessas opções mostra um exemplo disso?`,
       alternativas: [
-        "Ana",
-        "Desenho",
-        "Pinta",
-        "Um"
+        "Uma foto de um cachorro brincando no parque.",
+        "Um bilhete lembrando de comprar pão no mercado.",
+        "Uma mensagem dizendo: 'Vote no candidato X para um futuro melhor!'",
+        "Um livro de matemática com exercícios para estudar."
       ]
     },
     {
-      pergunta: `O verbo é uma classe de palavras que ditam ações, com base nisso, leia a frase: \n
-      Lucas chutou uma bola ontem. \n
-      Qual palavra mostra a ação?`,
+      pergunta: `As letras de músicas transmitem mensagens e podem influenciar a forma como pensamos e sentimos.\n
+Qual dessas músicas transmite uma mensagem de motivação e superação?`,
       alternativas: [
-        "Lucas",
-        "Bola",
+        "Uma canção infantil ensinando o alfabeto.",
+        "Uma música instrumental, sem letra.",
+        "Uma canção que descreve apenas um dia chuvoso sem emoções.",
+        "Uma música que fala sobre nunca desistir dos sonhos."
+      ]
+    },
+    {
+      pergunta: `Regência verbal é a relação entre um verbo e as palavras que o acompanham, especialmente o complemento. Ela mostra como o verbo exige ou se liga a outros termos da frase. Ex: Lucia gosta de música clássica.\n
+Observe a frase abaixo:\n
+"Pedro assistiu ___ filme ontem."\n
+Qual palavra completa corretamente a frase, de acordo com a regência verbal do verbo "assistir"?`,
+      alternativas: [
+        "Ao",
         "A",
-        "Chutou"
+        "No",
+        "Com o"
       ]
     },
     {
-      pergunta: ` O sujeito é quem faz uma ação, e o adjetivo é uma palavra que descreve o sujeito, com base nisso, leia a frase:\n
-O cachorro pequeno corre no quintal.\n
-Qual o sujeito e o adjetivo da frase? `,
+      pergunta: `Na tirinha, o personagem diz: "Ai ai... Eu não consigo encontrar uma dieta que eu goste!"\n
+O verbo gostar exige a preposição, mas na frase ele aparece sem a preposição, o que está gramaticalmente incorreto.\n
+Na fala "uma dieta que eu goste", qual é a preposição que estará de acordo com a regência verbal?`,
+imagem: "/fotosS.A/tirinhaLinguagem.png",
       alternativas: [
-        "Cachorro e Pequeno",
-        "Cachorro e Quintal",
-        "Pequeno e Quintal",
-        "Quintal e Pequeno"
-      ]
-    },
-    {
-      pergunta: `O sujeito é quem faz uma ação, e o adjetivo é uma palavra que descreve o sujeito, com base nisso, leia a frase:\n
-A menina alegre canta uma música.\n
-Qual o sujeito e o adjetivo da frase?`,
-      alternativas: [
-        "Música e Alegre",
-        "Menina e Alegre",
-        "Menina e Música",
-        "Alegre e Menina"
+        "Na",
+        "De",
+        "A",
+        "Ao"
       ]
     }, 
     {   
-      pergunta: `Leia o exemplo com atenção:\n
-      O cachorro está debaixo da cadeira.\n
-      A palavra "debaixo" mostra a posição do cachorro.\n
-      Essa palavra é chamada de preposição.\n
-      Agora complete a frase:\n
-      O caderno está ______ mochila.`,
+      pergunta: ` Descubra a pessoa pela biografia \n
+_____ , nasceu em 5 de fevereiro de 1992, em Mogi das Cruzes, São Paulo. Ele é um dos jogadores de futebol mais famosos do mundo, conhecido por sua habilidade, velocidade e criatividade em campo. Começou sua carreira no Santos Futebol Clube, onde se destacou e conquistou títulos importantes.
+Jogou em equipes na Espanha, França e Arábia Saudita  e também defendeu o escudo de sua seleção. Fora dos campos, ____ é uma figura midiática e muito influente nas redes sociais.`,
         alternativas: [
-          "Para",
-          "Com",
-          "Na",
-          "De"
+          "Lebron James",
+          "Lionel Messi",
+          "Neymar Junior",
+          "Tom Brady"
         ]
       },
       {
-        pergunta: `I. Ele é especialista _____ comunicação e marketing.\n
-        II. Comprei a passagem de ônibus _____ 20 reais.\n
-        III. Estamos _____ 5 km de Manaus.\n
-        As preposições que preenchem corretamente as lacunas são:`, 
+        pergunta: ` Em inglês, “Você está esperando alguma carta?” seria:`, 
         alternativas: [
-          "em, por, a",
-          "de, por, há",
-          "de, a, em",
-          "em, a, desde"
+          "Have you been waiting for a chart?",
+          "Are you attending any lecture?",
+          "Are you staying for the lecture?",
+          "Are you expecting a letter?"
         ]
       },
       {
-        pergunta: `Lucas queria brincar, mas começou a chover.\n
-        A palavra "mas" junta duas ideias diferentes:\n
-        Essa palavrinha é chamada de conjunção.\n
-        Agora complete a frase:\n
-        Ana estava com sono, ______ continuou estudando.`,
+        pergunta: `Escolha a alternativa que preenche a frase abaixo corretamente:\n
+        She is ___________________ girl I know.`,
         alternativas: [
-          "E",
-          "Porém",
-          "Porque",
-          "Ou"
+          "The most beautiful",
+          "More beautiful than",
+          "As beautiful as",
+          "Less beautiful than"
         ]
       },
       {
-        pergunta: `Pedro precisa escolher um lápis ou uma borracha.
-        A palavra "uma" junta duas coisas parecidas.
-        Essa palavrinha é uma conjunção.
-        Agora complete a frase:
-        Joana gosta de maçã ______ banana.`,
+        pergunta: `Mary is 10 years old. Jean is 10 years old.\n
+        Mary is _________________ Jean.`,
         alternativas: [
-          "Também",
-          "Mas",
-          "Porque",
-          "E"
+          "Younger than",
+          "As young as",
+          "The youngest",
+          "Less young than"
         ]
       }
   ];
